@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{85D85531-6C2F-4044-8B34-6C90A0E3932F}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>nginx</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>../../bin/debug</OutDir>
+    <IntDir>../../obj/debug/nginx</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>PCRE_STATIC;COMPILE_PCRE8;NGX_WIN32;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>core;event;http;mail;share;stream;win32;event/modules;http/modules;http/v2;../modules/rtmp;../3rdparty/pcre;../3rdparty/zlib;../3rdparty/openssl/include;../modules/rtmp/hls;../modules/rtmp/dash</AdditionalIncludeDirectories>
+      <ProgramDataBaseFileName>../../obj/debug/nginx/$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <BrowseInformationFile>../../obj/debug/nginx</BrowseInformationFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ManifestFile>../../obj/debug/nginx/$(TargetName)$(TargetExt).intermediate.manifest</ManifestFile>
+      <ProfileGuidedDatabase>../../obj/debug/nginx/$(TargetName).pgd</ProfileGuidedDatabase>
+      <AdditionalLibraryDirectories>../../lib/debug</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ws2_32.lib;zlib.lib;pcre.lib;libeay32.lib;ssleay32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Manifest>
+      <OutputManifestFile>../../obj/debug/nignx/$(TargetName)$(TargetExt).embed.manifest</OutputManifestFile>
+    </Manifest>
+    <ManifestResourceCompile>
+      <ResourceOutputFileName>../../obj/debug/nignx/$(TargetName)$(TargetExt).embed.manifest.res</ResourceOutputFileName>
+    </ManifestResourceCompile>
+    <ResourceCompile>
+      <Culture>0x7804</Culture>
+    </ResourceCompile>
+    <Xdcmake>
+      <OutputFile>../../obj/debug/nginx/$(TargetName).xml</OutputFile>
+    </Xdcmake>
+    <Bscmake>
+      <OutputFile>../../obj/debug/nginx/$(TargetName).bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\modules\rtmp\dash\ngx_rtmp_dash_module.c" />
+    <ClCompile Include="..\modules\rtmp\dash\ngx_rtmp_mp4.c" />
+    <ClCompile Include="..\modules\rtmp\hls\ngx_rtmp_hls_module.c" />
+    <ClCompile Include="..\modules\rtmp\hls\ngx_rtmp_mpegts.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_access_module.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_amf.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_auto_push_module.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_bandwidth.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_bitop.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_cmd_module.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_codec_module.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_control_module.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_core_module.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_eval.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_exec_module.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_flv_module.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_handler.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_handshake.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_init.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_limit_module.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_live_module.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_log_module.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_mp4_module.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_netcall_module.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_notify_module.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_play_module.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_proxy_protocol.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_receive.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_record_module.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_relay_module.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_send.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_shared.c" />
+    <ClCompile Include="..\modules\rtmp\ngx_rtmp_stat_module.c" />
+    <ClCompile Include="core\nginx.c" />
+    <ClCompile Include="core\ngx_array.c" />
+    <ClCompile Include="core\ngx_buf.c" />
+    <ClCompile Include="core\ngx_conf_file.c" />
+    <ClCompile Include="core\ngx_connection.c" />
+    <ClCompile Include="core\ngx_cpuinfo.c" />
+    <ClCompile Include="core\ngx_crc32.c" />
+    <ClCompile Include="core\ngx_crypt.c" />
+    <ClCompile Include="core\ngx_cycle.c" />
+    <ClCompile Include="core\ngx_file.c" />
+    <ClCompile Include="core\ngx_hash.c" />
+    <ClCompile Include="core\ngx_inet.c" />
+    <ClCompile Include="core\ngx_list.c" />
+    <ClCompile Include="core\ngx_log.c" />
+    <ClCompile Include="core\ngx_md5.c" />
+    <ClCompile Include="core\ngx_module.c" />
+    <ClCompile Include="core\ngx_murmurhash.c" />
+    <ClCompile Include="core\ngx_open_file_cache.c" />
+    <ClCompile Include="core\ngx_output_chain.c" />
+    <ClCompile Include="core\ngx_palloc.c" />
+    <ClCompile Include="core\ngx_parse.c" />
+    <ClCompile Include="core\ngx_parse_time.c" />
+    <ClCompile Include="core\ngx_proxy_protocol.c" />
+    <ClCompile Include="core\ngx_queue.c" />
+    <ClCompile Include="core\ngx_radix_tree.c" />
+    <ClCompile Include="core\ngx_rbtree.c" />
+    <ClCompile Include="core\ngx_regex.c" />
+    <ClCompile Include="core\ngx_resolver.c" />
+    <ClCompile Include="core\ngx_rwlock.c" />
+    <ClCompile Include="core\ngx_shmtx.c" />
+    <ClCompile Include="core\ngx_slab.c" />
+    <ClCompile Include="core\ngx_spinlock.c" />
+    <ClCompile Include="core\ngx_string.c" />
+    <ClCompile Include="core\ngx_syslog.c" />
+    <ClCompile Include="core\ngx_times.c" />
+    <ClCompile Include="event\modules\ngx_iocp_module.c" />
+    <ClCompile Include="event\modules\ngx_win32_select_module.c" />
+    <ClCompile Include="event\ngx_event.c" />
+    <ClCompile Include="event\ngx_event_accept.c" />
+    <ClCompile Include="event\ngx_event_acceptex.c" />
+    <ClCompile Include="event\ngx_event_connect.c" />
+    <ClCompile Include="event\ngx_event_openssl.c" />
+    <ClCompile Include="event\ngx_event_openssl_stapling.c" />
+    <ClCompile Include="event\ngx_event_pipe.c" />
+    <ClCompile Include="event\ngx_event_posted.c" />
+    <ClCompile Include="event\ngx_event_timer.c" />
+    <ClCompile Include="http\modules\ngx_http_access_module.c" />
+    <ClCompile Include="http\modules\ngx_http_auth_basic_module.c" />
+    <ClCompile Include="http\modules\ngx_http_autoindex_module.c" />
+    <ClCompile Include="http\modules\ngx_http_browser_module.c" />
+    <ClCompile Include="http\modules\ngx_http_charset_filter_module.c" />
+    <ClCompile Include="http\modules\ngx_http_chunked_filter_module.c" />
+    <ClCompile Include="http\modules\ngx_http_empty_gif_module.c" />
+    <ClCompile Include="http\modules\ngx_http_fastcgi_module.c" />
+    <ClCompile Include="http\modules\ngx_http_geo_module.c" />
+    <ClCompile Include="http\modules\ngx_http_gzip_filter_module.c" />
+    <ClCompile Include="http\modules\ngx_http_headers_filter_module.c" />
+    <ClCompile Include="http\modules\ngx_http_index_module.c" />
+    <ClCompile Include="http\modules\ngx_http_limit_conn_module.c" />
+    <ClCompile Include="http\modules\ngx_http_limit_req_module.c" />
+    <ClCompile Include="http\modules\ngx_http_log_module.c" />
+    <ClCompile Include="http\modules\ngx_http_map_module.c" />
+    <ClCompile Include="http\modules\ngx_http_memcached_module.c" />
+    <ClCompile Include="http\modules\ngx_http_mp4_module.c" />
+    <ClCompile Include="http\modules\ngx_http_not_modified_filter_module.c" />
+    <ClCompile Include="http\modules\ngx_http_proxy_module.c" />
+    <ClCompile Include="http\modules\ngx_http_random_index_module.c" />
+    <ClCompile Include="http\modules\ngx_http_range_filter_module.c" />
+    <ClCompile Include="http\modules\ngx_http_referer_module.c" />
+    <ClCompile Include="http\modules\ngx_http_rewrite_module.c" />
+    <ClCompile Include="http\modules\ngx_http_scgi_module.c" />
+    <ClCompile Include="http\modules\ngx_http_secure_link_module.c" />
+    <ClCompile Include="http\modules\ngx_http_slice_filter_module.c" />
+    <ClCompile Include="http\modules\ngx_http_split_clients_module.c" />
+    <ClCompile Include="http\modules\ngx_http_static_module.c" />
+    <ClCompile Include="http\modules\ngx_http_sub_filter_module.c" />
+    <ClCompile Include="http\modules\ngx_http_upstream_hash_module.c" />
+    <ClCompile Include="http\modules\ngx_http_upstream_ip_hash_module.c" />
+    <ClCompile Include="http\modules\ngx_http_upstream_keepalive_module.c" />
+    <ClCompile Include="http\modules\ngx_http_upstream_least_conn_module.c" />
+    <ClCompile Include="http\modules\ngx_http_upstream_zone_module.c" />
+    <ClCompile Include="http\modules\ngx_http_userid_filter_module.c" />
+    <ClCompile Include="http\modules\ngx_http_uwsgi_module.c" />
+    <ClCompile Include="http\ngx_http.c" />
+    <ClCompile Include="http\ngx_http_copy_filter_module.c" />
+    <ClCompile Include="http\ngx_http_core_module.c" />
+    <ClCompile Include="http\ngx_http_file_cache.c" />
+    <ClCompile Include="http\ngx_http_header_filter_module.c" />
+    <ClCompile Include="http\ngx_http_parse.c" />
+    <ClCompile Include="http\ngx_http_postpone_filter_module.c" />
+    <ClCompile Include="http\ngx_http_request.c" />
+    <ClCompile Include="http\ngx_http_request_body.c" />
+    <ClCompile Include="http\ngx_http_script.c" />
+    <ClCompile Include="http\ngx_http_special_response.c" />
+    <ClCompile Include="http\ngx_http_upstream.c" />
+    <ClCompile Include="http\ngx_http_upstream_round_robin.c" />
+    <ClCompile Include="http\ngx_http_variables.c" />
+    <ClCompile Include="http\ngx_http_write_filter_module.c" />
+    <ClCompile Include="mail\ngx_mail.c" />
+    <ClCompile Include="mail\ngx_mail_auth_http_module.c" />
+    <ClCompile Include="mail\ngx_mail_core_module.c" />
+    <ClCompile Include="mail\ngx_mail_handler.c" />
+    <ClCompile Include="mail\ngx_mail_imap_handler.c" />
+    <ClCompile Include="mail\ngx_mail_imap_module.c" />
+    <ClCompile Include="mail\ngx_mail_parse.c" />
+    <ClCompile Include="mail\ngx_mail_pop3_handler.c" />
+    <ClCompile Include="mail\ngx_mail_pop3_module.c" />
+    <ClCompile Include="mail\ngx_mail_proxy_module.c" />
+    <ClCompile Include="mail\ngx_mail_smtp_handler.c" />
+    <ClCompile Include="mail\ngx_mail_smtp_module.c" />
+    <ClCompile Include="share\ngx_modules.c" />
+    <ClCompile Include="stream\ngx_stream.c" />
+    <ClCompile Include="stream\ngx_stream_access_module.c" />
+    <ClCompile Include="stream\ngx_stream_core_module.c" />
+    <ClCompile Include="stream\ngx_stream_handler.c" />
+    <ClCompile Include="stream\ngx_stream_limit_conn_module.c" />
+    <ClCompile Include="stream\ngx_stream_proxy_module.c" />
+    <ClCompile Include="stream\ngx_stream_upstream.c" />
+    <ClCompile Include="stream\ngx_stream_upstream_hash_module.c" />
+    <ClCompile Include="stream\ngx_stream_upstream_least_conn_module.c" />
+    <ClCompile Include="stream\ngx_stream_upstream_round_robin.c" />
+    <ClCompile Include="win32\ngx_alloc.c" />
+    <ClCompile Include="win32\ngx_dlopen.c" />
+    <ClCompile Include="win32\ngx_errno.c" />
+    <ClCompile Include="win32\ngx_event_log.c" />
+    <ClCompile Include="win32\ngx_files.c" />
+    <ClCompile Include="win32\ngx_process.c" />
+    <ClCompile Include="win32\ngx_process_cycle.c" />
+    <ClCompile Include="win32\ngx_shmem.c" />
+    <ClCompile Include="win32\ngx_socket.c" />
+    <ClCompile Include="win32\ngx_stat.c" />
+    <ClCompile Include="win32\ngx_thread.c" />
+    <ClCompile Include="win32\ngx_time.c" />
+    <ClCompile Include="win32\ngx_udp_wsarecv.c" />
+    <ClCompile Include="win32\ngx_user.c" />
+    <ClCompile Include="win32\ngx_win32_init.c" />
+    <ClCompile Include="win32\ngx_wsarecv.c" />
+    <ClCompile Include="win32\ngx_wsarecv_chain.c" />
+    <ClCompile Include="win32\ngx_wsasend.c" />
+    <ClCompile Include="win32\ngx_wsasend_chain.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\modules\rtmp\dash\ngx_rtmp_mp4.h" />
+    <ClInclude Include="..\modules\rtmp\hls\ngx_rtmp_mpegts.h" />
+    <ClInclude Include="..\modules\rtmp\ngx_rtmp.h" />
+    <ClInclude Include="..\modules\rtmp\ngx_rtmp_amf.h" />
+    <ClInclude Include="..\modules\rtmp\ngx_rtmp_bandwidth.h" />
+    <ClInclude Include="..\modules\rtmp\ngx_rtmp_bitop.h" />
+    <ClInclude Include="..\modules\rtmp\ngx_rtmp_cmd_module.h" />
+    <ClInclude Include="..\modules\rtmp\ngx_rtmp_codec_module.h" />
+    <ClInclude Include="..\modules\rtmp\ngx_rtmp_eval.h" />
+    <ClInclude Include="..\modules\rtmp\ngx_rtmp_live_module.h" />
+    <ClInclude Include="..\modules\rtmp\ngx_rtmp_netcall_module.h" />
+    <ClInclude Include="..\modules\rtmp\ngx_rtmp_play_module.h" />
+    <ClInclude Include="..\modules\rtmp\ngx_rtmp_proxy_protocol.h" />
+    <ClInclude Include="..\modules\rtmp\ngx_rtmp_record_module.h" />
+    <ClInclude Include="..\modules\rtmp\ngx_rtmp_relay_module.h" />
+    <ClInclude Include="..\modules\rtmp\ngx_rtmp_streams.h" />
+    <ClInclude Include="..\modules\rtmp\ngx_rtmp_version.h" />
+    <ClInclude Include="core\nginx.h" />
+    <ClInclude Include="core\ngx_array.h" />
+    <ClInclude Include="core\ngx_buf.h" />
+    <ClInclude Include="core\ngx_config.h" />
+    <ClInclude Include="core\ngx_conf_file.h" />
+    <ClInclude Include="core\ngx_connection.h" />
+    <ClInclude Include="core\ngx_core.h" />
+    <ClInclude Include="core\ngx_crc.h" />
+    <ClInclude Include="core\ngx_crc32.h" />
+    <ClInclude Include="core\ngx_crypt.h" />
+    <ClInclude Include="core\ngx_cycle.h" />
+    <ClInclude Include="core\ngx_file.h" />
+    <ClInclude Include="core\ngx_hash.h" />
+    <ClInclude Include="core\ngx_inet.h" />
+    <ClInclude Include="core\ngx_list.h" />
+    <ClInclude Include="core\ngx_log.h" />
+    <ClInclude Include="core\ngx_md5.h" />
+    <ClInclude Include="core\ngx_module.h" />
+    <ClInclude Include="core\ngx_murmurhash.h" />
+    <ClInclude Include="core\ngx_open_file_cache.h" />
+    <ClInclude Include="core\ngx_palloc.h" />
+    <ClInclude Include="core\ngx_parse.h" />
+    <ClInclude Include="core\ngx_parse_time.h" />
+    <ClInclude Include="core\ngx_proxy_protocol.h" />
+    <ClInclude Include="core\ngx_queue.h" />
+    <ClInclude Include="core\ngx_radix_tree.h" />
+    <ClInclude Include="core\ngx_rbtree.h" />
+    <ClInclude Include="core\ngx_regex.h" />
+    <ClInclude Include="core\ngx_resolver.h" />
+    <ClInclude Include="core\ngx_rwlock.h" />
+    <ClInclude Include="core\ngx_sha1.h" />
+    <ClInclude Include="core\ngx_shmtx.h" />
+    <ClInclude Include="core\ngx_slab.h" />
+    <ClInclude Include="core\ngx_string.h" />
+    <ClInclude Include="core\ngx_syslog.h" />
+    <ClInclude Include="core\ngx_times.h" />
+    <ClInclude Include="event\modules\ngx_iocp_module.h" />
+    <ClInclude Include="event\ngx_event.h" />
+    <ClInclude Include="event\ngx_event_connect.h" />
+    <ClInclude Include="event\ngx_event_openssl.h" />
+    <ClInclude Include="event\ngx_event_pipe.h" />
+    <ClInclude Include="event\ngx_event_posted.h" />
+    <ClInclude Include="event\ngx_event_timer.h" />
+    <ClInclude Include="http\ngx_http.h" />
+    <ClInclude Include="http\ngx_http_cache.h" />
+    <ClInclude Include="http\ngx_http_config.h" />
+    <ClInclude Include="http\ngx_http_core_module.h" />
+    <ClInclude Include="http\ngx_http_request.h" />
+    <ClInclude Include="http\ngx_http_script.h" />
+    <ClInclude Include="http\ngx_http_upstream.h" />
+    <ClInclude Include="http\ngx_http_upstream_round_robin.h" />
+    <ClInclude Include="http\ngx_http_variables.h" />
+    <ClInclude Include="mail\ngx_mail.h" />
+    <ClInclude Include="mail\ngx_mail_imap_module.h" />
+    <ClInclude Include="mail\ngx_mail_pop3_module.h" />
+    <ClInclude Include="mail\ngx_mail_smtp_module.h" />
+    <ClInclude Include="share\ngx_auto_config.h" />
+    <ClInclude Include="share\ngx_auto_headers.h" />
+    <ClInclude Include="stream\ngx_stream.h" />
+    <ClInclude Include="stream\ngx_stream_upstream.h" />
+    <ClInclude Include="stream\ngx_stream_upstream_round_robin.h" />
+    <ClInclude Include="win32\ngx_alloc.h" />
+    <ClInclude Include="win32\ngx_atomic.h" />
+    <ClInclude Include="win32\ngx_dlopen.h" />
+    <ClInclude Include="win32\ngx_errno.h" />
+    <ClInclude Include="win32\ngx_files.h" />
+    <ClInclude Include="win32\ngx_os.h" />
+    <ClInclude Include="win32\ngx_process.h" />
+    <ClInclude Include="win32\ngx_process_cycle.h" />
+    <ClInclude Include="win32\ngx_shmem.h" />
+    <ClInclude Include="win32\ngx_socket.h" />
+    <ClInclude Include="win32\ngx_thread.h" />
+    <ClInclude Include="win32\ngx_time.h" />
+    <ClInclude Include="win32\ngx_user.h" />
+    <ClInclude Include="win32\ngx_win32_config.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="win32\nginx.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="win32\nginx.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

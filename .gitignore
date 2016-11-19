@@ -31,3 +31,28 @@
 # Debug files
 *.dSYM/
 *.su
+
+# visual stdio files
+obj
+ipch/
+*.aps
+*.ncb
+*.opensdf
+*.sdf
+*.cachefile
+*.ilk
+*.pdb
+
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
+
+# mp4 files
+*.mp4
+
+# log files
+*.log
+
+# pid files
+*.pid
